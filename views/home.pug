@@ -4,4 +4,29 @@ html
     body 
         button Click me! 
         p
-        script(type="application/javascript" src="../public/index.js") 
+        script.
+            const btn = document.querySelector('button');
+            const text = document.querySelector('p');
+
+            let key = '6GfDQsLYGfu1AbAUN2yt88pgiROl3Lah';
+
+
+            //Fetch a list of best selling books from the NYT Books API.
+            btn.addEventListener('click', async (e) => {
+            let response = fetch(
+                'https://api.nytimes.com/svc/books/v3/lists.json?api-key=' +
+                key,
+                {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                }
+            )
+                .then((respone) => respone.json())
+                .then((data) => {
+                //Append listings to the DOM.
+                text.innerHTML = data;
+                })
+                .catch((error) => console.log(error));
+            });

@@ -1,3 +1,3 @@
 export default async (req, res) => {
-  res.render('home');
+  res.render('home.pug');
 };

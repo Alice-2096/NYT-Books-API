@@ -3,7 +3,6 @@ const text = document.querySelector('p');
 
 let key = config.apiKey;
 
-text.addEventListener('onload', () => (text.innerHTML = ''));
 //Fetch a list of best selling books from the NYT Books API.
 btn.addEventListener('click', async (e) => {
   let response = fetch(
@@ -19,7 +18,6 @@ btn.addEventListener('click', async (e) => {
     .then((respone) => respone.json())
     .then((data) => {
       //Append listings to the DOM.
-      text.innerHTML = '';
       text.innerHTML = data;
     })
     .catch((error) => console.log(error));
